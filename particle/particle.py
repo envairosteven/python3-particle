@@ -37,6 +37,12 @@ class Particle(object):
     username = None
     password = None
 
+    
+    def __init__(self, token):
+        self.token = token
+        self.expires_at = datetime.datetime.now(pytz.utc) + datetime.timedelta(seconds=10000000000)
+        super(Particle, self).__init__()
+    '''
     def __init__(self, username, password, use_token=False):
         self.username = username
         self.password = password
@@ -47,6 +53,7 @@ class Particle(object):
         self.token = token_dict['token']
         self.expires_at = token_dict['expiry']
         super(Particle, self).__init__()
+    '''
 
     def get_valid_token(self):
         token_list = self.get_token_list()
